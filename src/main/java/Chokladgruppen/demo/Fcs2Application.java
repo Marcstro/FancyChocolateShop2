@@ -10,6 +10,7 @@ public class Fcs2Application {
 		SpringApplication.run(Fcs2Application.class, args);
                 
                 System.out.println("MARCUS HAS MADE A PROJECT!");
+                System.out.println("Alen test");
 	}
 
 }
