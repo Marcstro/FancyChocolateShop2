@@ -9,12 +9,17 @@
  * aer awesome
  */
 
-package Chokladgruppen.repository;
+package Chokladgruppen.demo;
 
-import Chokladgruppen.domain.Chocolate;
+import Chokladgruppen.demo.Chocolate;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 
-public interface ChocolateRepository extends CrudRepository<Chocolate, Long>{
+public interface ChocolateRepository extends CrudRepository<Chocolate, Long> {
+
+    List<Chocolate> findByName(String name);
+    
+    List<Chocolate> findByPriceLessThan(double price);
 
 }

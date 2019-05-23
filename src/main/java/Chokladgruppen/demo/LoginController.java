@@ -1,4 +1,4 @@
-package Chokladgruppen.controller;
+package Chokladgruppen.demo;
 
 /**
  *
