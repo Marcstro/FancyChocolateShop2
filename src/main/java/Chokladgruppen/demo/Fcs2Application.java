@@ -25,7 +25,7 @@ public class Fcs2Application {
             public class HomeContoller {
                 @RequestMapping("/")
                 public String index() {
-                    return "html/admin.html";
+                    return "html/login.html";
                 }
             }
         
