@@ -1,9 +1,12 @@
 package Chokladgruppen.demo;
 
-/**
- *
- * @author Lovisa
- */
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
+@RestController
 public class LoginController {
+    
+
     
 }
