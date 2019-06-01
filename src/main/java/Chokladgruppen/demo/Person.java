@@ -1,9 +1,14 @@
 package Chokladgruppen.demo;
 
+import java.util.ArrayList;
+import java.util.List;
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.PERSIST;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Person {
@@ -19,6 +24,10 @@ public class Person {
     private boolean admin;
     private boolean premium;
 
+     @OneToMany(cascade=MERGE , mappedBy="person")
+    private List<Orders> orders = new ArrayList();
+     
+     
     public Person() {
     }
 
@@ -31,6 +40,14 @@ public class Person {
         this.premium = premium;
     }
 
+    public List<Orders> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Orders> orders) {
+        this.orders = orders;
+    }
+    
     public Long getId() {
         return id;
     }

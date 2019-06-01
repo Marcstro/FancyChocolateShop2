@@ -19,4 +19,6 @@ public interface PersonRepository extends CrudRepository<Person, Long>{
     
     List<Person> findByPremiumTrue();
     
+    List<Person> findById(long id);
+    
 }
