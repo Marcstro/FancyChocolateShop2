@@ -15,11 +15,11 @@ public class LoginController {
         return "html/login.html";
     }
 
-    // Denna kan nu returnera en json. Funkar!
+    // Denna kan nu returnera en json.
     @RequestMapping(method = RequestMethod.POST, value = "/test")
     @ResponseBody
     ResponseEntity<LoginReply> test(@RequestBody LoginPerson loginCheckPerson) {
-        System.out.println("LoginController!");
+        // System.out.println("LoginController!");
         LoginReply lReply = new LoginReply();
         lReply.setUserName(loginCheckPerson.getUserName());
         lReply.setPassword(loginCheckPerson.getPassword());
@@ -27,11 +27,24 @@ public class LoginController {
     }
 
     
+    // Returnerar en String
     @RequestMapping(method = RequestMethod.GET, value = "/testGet")
     @ResponseBody
     public String test() {
         // System.out.println("Inne i test! (Get)");
         return "jny";
+    }
+    
+    
+    // Returnerar en Json
+    @RequestMapping(method = RequestMethod.GET, value = "/testGetJson")
+    @ResponseBody
+    public LoginReply testGetJson() {
+        System.out.println("Inne i testGetJson!");
+        LoginReply lReply = new LoginReply();
+        lReply.setUserName("JnyGetJson");
+        lReply.setPassword("PassGetJson");
+        return lReply;
     }
     
     

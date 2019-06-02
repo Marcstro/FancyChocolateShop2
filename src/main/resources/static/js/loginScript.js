@@ -2,9 +2,6 @@
 
 
 $('#btnLogIn').click(function () {
-    console.log("Här1");
-    test = JSON.stringify({"userName": $('#userName').val(), "password": $('#password').val()});
-    console.log("test: " + test);
 
     $.ajax({
         url: 'http://localhost:8080/test',
@@ -18,11 +15,8 @@ $('#btnLogIn').click(function () {
         dataType: 'json',
         async: false,
         success: function (data) {
-            
             console.log("Inne i success!" + JSON.stringify(data));
-            $('#POST-test').append(data.userName);
-            // $('#POST-test').empty().append(data.toString());
-            // $('#POST-test').html(JSON.stringify(data)); // Skapat tagg för att testa
+            $('.POST-test').append(data.userName);
             
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -32,7 +26,7 @@ $('#btnLogIn').click(function () {
 });
 
 
-// Denna funkar:
+// Denna funkar. Hämtar en String:
 $('#btnLogIn').click(function () {
     $.ajax({
         url: "http://localhost:8080/testGet"
@@ -43,32 +37,18 @@ $('#btnLogIn').click(function () {
 });
 
 
+// Denna funkar:
+$('#btnLogIn').click(function () {
+    $.ajax({
+        url: "http://localhost:8080/testGetJson"
+    }).then(function (data) {
+        console.log("Inne i funktionen - testGetJson" + JSON.stringify(data));
+        $('.GETJson-test').append(data.userName);
+    });
+});
 
-function checkUserLogin() {
-
-}
 
 
-
-// ActionListener till knapp
-//var btn = document.querySelector("#btnNewAccount")
-//btn.addEventListener("click", showRegistration)
-
-
-//function showRegistration(){
-//    url = "/registration/";
-//    $.get(url, function(response){
-//       console.log("result för getStockInfo: " + JSON.stringify(response[0]));
-//       return response;
-//    })
+//function checkUserLogin() {
+//
 //}
-
-
-//$(document).ready(function() {
-//    $.ajax({
-//        url: "http:localhost:8080/greeting"
-//    }).then(function(data) {
-//       $('.greeting-id').append(data.id);
-//       $('.greeting-content').append(data.content);
-//    });
-//});
