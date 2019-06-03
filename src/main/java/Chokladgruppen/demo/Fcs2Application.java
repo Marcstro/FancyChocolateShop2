@@ -20,16 +20,7 @@ public class Fcs2Application {
 		SpringApplication.run(Fcs2Application.class, args);
 	}
         
-            
-            @Controller 
-            public class HomeContoller {
-                @RequestMapping("/")
-                public String index() {
-                    return "html/admin.html";
-                }
-            }
-        
-         @Bean
+        @Bean
 	public CommandLineRunner initChocolate (ChocolateRepository repository) {
             
             	return (args) -> {
