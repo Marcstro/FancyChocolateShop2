@@ -10,35 +10,17 @@ $(document).ready(function () {
 
 
 
-var listOfProducts = {};
+var listOfProducts = [];
 
 function getChocolates() {
-    console.log("inne i getChocolates!");
     $.ajax({
         url: "http://localhost:8080/Chocolates"
     }).then(function (data) {
-        console.log("Inne i funktionen där data hämtats - getChocolates" + JSON.stringify(data));
-        listOfProducts = JSON.parse(data);
-
-        for (var x in listOfProducts) {
-            console.log("Skriva ut chokladobj: " + x.name);
-        }
-
-        // $('.GETJson-test').append(data.userName);
-
-        listOfProducts.map((x, i) => {
-            console.log("mapTEST:  " + x.name);
-        });
-
-
-
+        listOfProducts = data;
+        // För att skapa chokladKorten
+        addChocolateCardElements();
     });
-
-    // För att skapa chokladKorten
-    addChocolateCardElements();
-
-}
-;
+};
 
 
 // Initialisering av drop down för sökrutan på produkter
@@ -129,7 +111,7 @@ function addChocolateCardElements() {
         chocolateCardsDiv.innerHTML += `<div class="col s4 m4">`
                 + `<div class="card">`
                 + `<div class="card-image">`
-                + `<img src="images/${x.smallPictureName}">`
+                + `<img src="images/${x.pictureName}">`
                 + `<span class="card-title cardTitleFont">${x.name}</span>`
                 + `<a id="modalLink${i}" class="btn-floating halfway-fab waves-effect waves-light pink lighten-4 modal-trigger" href="#modal1">`
                 + `<i class="material-icons">more_horiz</i></a>`

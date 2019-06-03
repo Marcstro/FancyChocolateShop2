@@ -3,7 +3,7 @@ package Chokladgruppen.demo;
 
 
 // Detta namn som NetBeans klagar på ev. Vill att man ska döpa om i terminalen/commandline
-public class LoginReply {
+public class loginReply {
     
     private String userName;
     private String password;
