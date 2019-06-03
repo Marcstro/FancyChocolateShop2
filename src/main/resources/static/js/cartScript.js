@@ -33,10 +33,10 @@ function getProducts(){
     
     ProductHTML += `</tbody></table>`;
     
-    var totalSum = 9867.996467;
-//    productsInCart.map(x => {
-//        totalSum += x.chocolate.price * x.amount;
-//    });
+    var totalSum = 0;
+    productsInCart.map(x => {
+        totalSum += x.chocolate.price * x.amount;
+    });
     
     var discount = 0;
     var sumToPay = totalSum;
