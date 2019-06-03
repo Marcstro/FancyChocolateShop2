@@ -2,6 +2,7 @@
 
 package Chokladgruppen.demo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
+
 public class Orders {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -22,9 +24,11 @@ public class Orders {
     public Date date;
     private double price;
     
+    @JsonIgnore
     @ManyToOne(cascade=MERGE )
     public Person person;
     
+    @JsonIgnore
     @OneToMany(cascade=MERGE , mappedBy="orders")
     private List<OrderDetails> orderDetails = new ArrayList();
 
