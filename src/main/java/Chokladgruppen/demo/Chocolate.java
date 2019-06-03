@@ -20,11 +20,12 @@ public class Chocolate {
     private String inStockMessage;
     private boolean showPopUp;
     private String pictureName;
+    private String smallPictureName;
 
     public Chocolate() {
     }
 
-    public Chocolate(String name, double price, String description, String brand, int inStock, int amount, String inStockMessage, boolean showPopUp, String pictureName) {
+    public Chocolate(String name, double price, String description, String brand, int inStock, int amount, String inStockMessage, boolean showPopUp, String pictureName, String smallPictureName) {
         this.name = name;
         this.price = price;
         this.description = description;
@@ -34,6 +35,7 @@ public class Chocolate {
         this.inStockMessage = inStockMessage;
         this.showPopUp = showPopUp;
         this.pictureName = pictureName;
+        this.smallPictureName = smallPictureName;
     }
 
     public Long getChocolateId() {
@@ -116,6 +118,16 @@ public class Chocolate {
         this.pictureName = pictureName;
     }
 
+    public String getSmallPictureName() {
+        return smallPictureName;
+    }
+
+    public void setSmallPictureName(String smallPictureName) {
+        this.smallPictureName = smallPictureName;
+    }
+
+    
+    
     @Override
     public String toString() {
         return "Chocolate{" + "chocolateId=" + chocolateId + ", name=" + name + ", price=" + price + ", description=" + description + ", brand=" + brand + ", inStock=" + inStock + ", amount=" + amount + ", inStockMessage=" + inStockMessage + ", showPopUp=" + showPopUp + ", pictureName=" + pictureName + '}';

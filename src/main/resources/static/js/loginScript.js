@@ -37,7 +37,7 @@ $('#btnLogIn').click(function () {
 });
 
 
-// Denna funkar:
+// Denna funkar. Hämtar en Json:
 $('#btnLogIn').click(function () {
     $.ajax({
         url: "http://localhost:8080/testGetJson"
@@ -47,8 +47,3 @@ $('#btnLogIn').click(function () {
     });
 });
 
-
-
-//function checkUserLogin() {
-//
-//}
