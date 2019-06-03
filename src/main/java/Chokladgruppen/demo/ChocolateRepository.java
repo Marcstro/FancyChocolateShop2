@@ -23,5 +23,7 @@ public interface ChocolateRepository extends CrudRepository<Chocolate, Long> {
     List<Chocolate> findByPriceLessThan(double price);
     
     List<Chocolate> findById(long id);
+    
+    List<Chocolate> findByNameContainingIgnoreCase(String name);
 
 }

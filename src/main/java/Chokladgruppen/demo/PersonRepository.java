@@ -21,4 +21,8 @@ public interface PersonRepository extends CrudRepository<Person, Long>{
     
     List<Person> findById(long id);
     
+    List<Person> findByNameContainingIgnoreCase(String name);
+    
+    
+    
 }
