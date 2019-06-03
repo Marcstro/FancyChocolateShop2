@@ -11,21 +11,15 @@
 
 package Chokladgruppen.demo;
 
-import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service("testService")
-public class testService {
+@Service("chocolateService")
+public class ChocolateService {
     
     @Autowired
     ChocolateRepository repository;
     
-//    Optional<Chocolate> getChocolate(long id){
-//        return repository.findById(id);
-//        return repository.findById(id).get(0);
-//    }
     Chocolate getChocolate(long id){
         //return repository.findById(id);
         return repository.findById(id).get(0);
