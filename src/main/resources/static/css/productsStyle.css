@@ -24,9 +24,24 @@ h4 {
 /* label focus color */
 .input-field input:focus + label {
     color: grey !important;
-  }
-  /* label underline focus color */
-  .row .input-field input:focus {
+}
+/* label underline focus color */
+.row .input-field input:focus {
     border-bottom: 1px solid black !important;
-    box-shadow: 0 1px 0 0 black !important
-  }
+    box-shadow: 0 1px 0 0 black !important;
+}
+
+/* Ett försök att få bilderna lika stora
+.card-image {
+    max-height: 100px;
+    width: auto;
+    background-size: contain;
+    border: 1px solid red;
+}
+
+.chocolateImages {
+    max-height: 100px;
+    width: auto;
+    background-size: contain;
+    border: 1px solid green;
+}*/

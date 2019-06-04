@@ -111,7 +111,7 @@ function addChocolateCardElements() {
         chocolateCardsDiv.innerHTML += `<div class="col s4 m4">`
                 + `<div class="card">`
                 + `<div class="card-image">`
-                + `<img src="images/${x.pictureName}">`
+                + `<img class="chocolateImages" src="images/${x.pictureName}">`
                 + `<span class="card-title cardTitleFont">${x.name}</span>`
                 + `<a id="modalLink${i}" class="btn-floating halfway-fab waves-effect waves-light pink lighten-4 modal-trigger" href="#modal1">`
                 + `<i class="material-icons">more_horiz</i></a>`

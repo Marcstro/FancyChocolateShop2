@@ -45,16 +45,16 @@ public class Fcs2Application {
             
             	return (args) -> {
                     log.info("ChocolateRepository initiated correctly");
-                        repository.save(new Chocolate("Le Grand Louis XVI", 8616, "The dark chocolates with 99% cocoa", "Debauve and Gallais", 2000, 0, "", true,"Le-Grand-Louis-XVI.jpg", "Amedei-Porcelana_small.jpg"));
-                    repository.save(new Chocolate("Wispa Gold", 15316.39, "Chocolate is wrapped in an edible gold leaf", "Cadbury", 500, 0, "", true, "Wispa-gold.jpg", "Amedei-Porcelana_small.jpg"));
-                    repository.save(new Chocolate("Chocopologie Chocolate Truffle", 24895.31, "Dark chocolate, ganache, and French Perigord truffle", "Knipschildt", 500, 0, "", false, "Chocopologie-Chocolate-Truffle.jpg", "Amedei-Porcelana_small.jpg"));
-                    repository.save(new Chocolate("Flavored Truffles", 938.06, "Plain dark chocolate, black currant, caramell toffee ", "La Maison du Chocolat", 2000, 0, "", false, "Amedei-Toscano-Black-Truffles-in-Swarovski-Chocolate-Box.jpg", "Amedei-Porcelana_small.jpg"));
-                    repository.save(new Chocolate("Boite Maison", 1856.89, "Selection of 93 ganaches,pralines and dark chocolate truffles", "La Maison du Chocolat", 1500, 0, "", false, "Grand-Cru-by-Pierre-Marcolni-1.jpg", "Amedei-Porcelana_small.jpg"));
-                    repository.save(new Chocolate("Sweet Surprise Tower", 899.58, "Creamy milk chocolates and luscious chocolate truffles", "Godiva", 3000, 0, "", false, "Richart-Chocolate.jpg", "Amedei-Porcelana_small.jpg"));
-                    repository.save(new Chocolate("Milk Chocolate Dipped Strawberies", 765, "12 sweet strawberries covered in smooth milk chocolate ", "Godiva", 3000, 0, "", false, "Voges-Haut.jpg", "Amedei-Porcelana_small.jpg"));
-                    repository.save(new Chocolate("Chocolate Pearls", 449.80, " Dark Chocolate Pearls 55%, Dark Chocolate Crunchy Pearls 55%, CARAMÉLIA 36% Crunchy Pearls.", "Valrhona", 4000, 0, "", false, "Chocolates-with-Edible-Gold-by-DeLafee.jpg", "Amedei-Porcelana_small.jpg"));
+                        repository.save(new Chocolate("Le Grand Louis XVI", 8616, "The dark chocolates with 99% cocoa", "Debauve and Gallais", 2000, 0, "", true,"Le-Grand-Louis-XVI.jpg", "Le-Grand-Louis-XVI_small.jpg"));
+                    repository.save(new Chocolate("Wispa Gold", 15316.39, "Chocolate is wrapped in an edible gold leaf", "Cadbury", 500, 0, "", true, "Wispa-gold.jpg", "Wispa-gold_small.jpg"));
+                    repository.save(new Chocolate("Chocopologie Chocolate Truffle", 24895.31, "Dark chocolate, ganache, and French Perigord truffle", "Knipschildt", 500, 0, "", false, "Chocopologie-Chocolate-Truffle.jpg", "Chocopologie-Chocolate-Truffle_small.jpg"));
+                    repository.save(new Chocolate("Flavored Truffles", 938.06, "Plain dark chocolate, black currant, caramell toffee ", "La Maison du Chocolat", 2000, 0, "", false, "Amedei-Toscano-Black-Truffles-in-Swarovski-Chocolate-Box.jpg", "Amedei-Toscano-Black-Truffles-in-Swarovski-Chocolate-Box_small.jpg"));
+                    repository.save(new Chocolate("Boite Maison", 1856.89, "Selection of 93 ganaches,pralines and dark chocolate truffles", "La Maison du Chocolat", 1500, 0, "", false, "Grand-Cru.jpg", "Grand-Cru_small.jpg"));
+                    repository.save(new Chocolate("Sweet Surprise Tower", 899.58, "Creamy milk chocolates and luscious chocolate truffles", "Godiva", 3000, 0, "", false, "Richart-Chocolate.jpg", "Richart-Chocolate_small.jpg"));
+                    repository.save(new Chocolate("Milk Chocolate Dipped Strawberies", 765, "12 sweet strawberries covered in smooth milk chocolate ", "Godiva", 3000, 0, "", false, "Voges-Haut.jpg", "Voges-Haut_small.jpg"));
+                    repository.save(new Chocolate("Chocolate Pearls", 449.80, " Dark Chocolate Pearls 55%, Dark Chocolate Crunchy Pearls 55%, CARAMÉLIA 36% Crunchy Pearls.", "Valrhona", 4000, 0, "", false, "Chocolates-with-Edible-Gold.jpg", "Chocolates-with-Edible-Gold_small.jpg"));
                     repository.save(new Chocolate("Coffret Selection", 525.45, "An assortment of almonds and hazelnuts coated in milk chocolate", "Valrhona", 3500, 0, "", false, "Amedei-Porcelana.jpg", "Amedei-Porcelana_small.jpg"));
-                    repository.save(new Chocolate("Tosca", 567.25, "A box with 7 delightful artisan chocolates, the best southern European almonds covered in chocolate", "Puccini bomboni", 1000, 0, "", false, "The-Aficionados-Collection.jpg", "Amedei-Porcelana_small.jpg"));
+                    repository.save(new Chocolate("Tosca", 567.25, "A box with 7 delightful artisan chocolates, the best southern European almonds covered in chocolate", "Puccini bomboni", 1000, 0, "", false, "The-Aficionados-Collection.jpg", "The-Aficionados-Collection_small.jpg"));
                   
                     log.info(Long.toString(repository.count()) + " chocolates created for the database.");
                     
