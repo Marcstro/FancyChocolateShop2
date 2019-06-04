@@ -11,8 +11,6 @@
 
 package Chokladgruppen.demo;
 
-import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,19 +18,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/Chocolates")
-public class testController {
+@RequestMapping("/orders")
+public class OrdersController {
 
     @Autowired
-    testService service;
+    OrdersService service;
     
     @GetMapping
-    public Iterable<Chocolate> getChocolates(){
-        return service.getAllChocolate();
+    public Iterable<Orders> getOrders(){
+        return service.getAllOrders();
     }
     
     @GetMapping("/{id}")
-    public Chocolate getChocolateyId(@PathVariable Long id){
-        return service.getChocolate(id);
+    public Orders getOrdersId(@PathVariable Long id){
+        return service.getOrders(id);
     }
 }

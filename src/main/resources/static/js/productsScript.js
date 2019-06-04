@@ -34,71 +34,6 @@ function getChocolates() {
 
 
 
-//[{
-//        "chocolateId":1,
-//        "name":"Le Grand Louis XVI",
-//        "price":8616,
-//        "description":"The dark chocolates with 99% cocoa",
-//        "brand":"Debauve and Gallais",
-//        "inStock":2000,
-//        "amount":0,
-//        "inStockMessage":"",
-//        "showPopUp":true,
-//        "pictureName":"Le-Grand-Louis-XVI.jpg"
-//    },
-
-//var listOfProducts = [
-//    {
-//        id: 1,
-//        smallPictureName: "Amedei-Porcelana_small.jpg",
-//        pictureName: "Amedei-Porcelana.jpg",
-//        name: "Amedei-Porcelana",
-//        brand: "Debauve and Gallais",
-//        description: "The dark chocolates with 99% cocoa",
-//        amount: 0
-//    }, {
-//        id: 2,
-//        smallPictureName: "Amedei-Porcelana_small.jpg",
-//        pictureName: "Amedei-Porcelana.jpg",
-//        name: "Chocopologie Chocolate Truffle",
-//        brand: "La Maison du Chocolat",
-//        description: "Chocolate is wrapped in an edible gold leaf",
-//        amount: 0
-//    }, {
-//        id: 3,
-//        smallPictureName: "Amedei-Porcelana_small.jpg",
-//        pictureName: "Amedei-Porcelana.jpg",
-//        name: "Chocolate Pearls",
-//        brand: "Valrhona",
-//        description: "Dark Chocolate Pearls 55%, Dark Chocolate Crunchy Pearls 55%, Caramélia 36%",
-//        amount: 0
-//    }, {
-//        id: 4,
-//        smallPictureName: "Amedei-Porcelana_small.jpg",
-//        pictureName: "Amedei-Porcelana.jpg",
-//        name: "Amedei-Porcelana",
-//        brand: "Debauve and Gallais",
-//        description: "The dark chocolates with 99% cocoa",
-//        amount: 0
-//    }, {
-//        id: 5,
-//        smallPictureName: "Amedei-Porcelana_small.jpg",
-//        pictureName: "Amedei-Porcelana.jpg",
-//        name: "Chocopologie Chocolate Truffle",
-//        brand: "La Maison du Chocolat",
-//        description: "Chocolate is wrapped in an edible gold leaf",
-//        amount: 0
-//    }, {
-//        id: 6,
-//        smallPictureName: "Amedei-Porcelana_small.jpg",
-//        pictureName: "Amedei-Porcelana.jpg",
-//        name: "Chocolate Pearls",
-//        brand: "Valrhona",
-//        description: "Dark Chocolate Pearls 55%, Dark Chocolate Crunchy Pearls 55%, Caramélia 36%",
-//        amount: 0
-//    }
-//];
-
 // Element att lägga choklad-korten i
 const chocolateCardsDiv = document.querySelector("#divForChocolateCards");
 // Element att lägga popUpContent i
@@ -133,7 +68,7 @@ function addEventListenersToChocolateCards() {
     listOfProducts.map((x, i) => {
         listenerElement.push("listenerElement" + i);
         listenerElement[i] = document.getElementById(`modalLink${i}`);
-        console.log("Id1: " + listOfProducts[i].chocolateId);
+        // console.log("Id1: " + listOfProducts[i].chocolateId);
         listenerElement[i].addEventListener("click", function () {
             addPopUpContent(x.chocolateId);
         });
@@ -145,7 +80,7 @@ function addEventListenersToChocolateCards() {
 function addPopUpContent(id) {
     listOfProducts.map((x, i) => {
         if (x.chocolateId === id) {
-            console.log("inne i addPopUpContent - id: " + id)
+            // console.log("inne i addPopUpContent - id: " + id)
             popUpContentDiv.innerHTML += `<div class="row">`
                     + `<div class="col s6 m2 l2 xl2">`
                     + `<img src="images/${x.smallPictureName}">`

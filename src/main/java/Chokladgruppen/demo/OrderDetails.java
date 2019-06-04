@@ -3,6 +3,7 @@
 package Chokladgruppen.demo;
 
 import Chokladgruppen.demo.Chocolate;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import static javax.persistence.CascadeType.MERGE;
 import static javax.persistence.CascadeType.PERSIST;
 import javax.persistence.Entity;
@@ -20,9 +21,13 @@ public class OrderDetails {
     private Long id;
     private int amount;
     
+    //denna kanske behovs?
+    //@JsonIgnore
     @OneToOne(cascade=MERGE)
     private Chocolate chocolate;
     
+    //denna ocksa?
+    //@JsonIgnore
     @ManyToOne(cascade=MERGE)
     public Orders orders;
 

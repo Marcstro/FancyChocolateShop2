@@ -1,5 +1,6 @@
 package Chokladgruppen.demo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
 import static javax.persistence.CascadeType.MERGE;
@@ -24,6 +25,7 @@ public class Person {
     private boolean admin;
     private boolean premium;
 
+    @JsonIgnore
      @OneToMany(cascade=MERGE , mappedBy="person")
     private List<Orders> orders = new ArrayList();
      

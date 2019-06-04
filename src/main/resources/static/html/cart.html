@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link href="css/cartStyle.css" rel="stylesheet" />
+   <!-- Compiled and minified JavaScript -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+   <!--Import Google Icon Font-->
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <!-- Compiled and minified CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+   <title>Cart</title>
+   <!-- Länk till font -->
+   <link href="https://fonts.googleapis.com/css?family=Oswald%7CSacramento&display=swap" rel="stylesheet">
+</head>
+
+<body>
+   <header>
+       <nav class="nav-wrapper pink lighten-4">
+           <div class="container">
+               <a href="#" id="dreamyFont1" class="brand-logo black-text left">Fancy Chocolate</a>
+               <ul id="headerLinks" class="right hide-on-med-and-down">
+                   <li>
+                       <div class="row">
+                           <div class="col s12">
+                               <div class="row">
+                                   <div class="input-field col s12" style="color: black;">
+                                       <i class="material-icons prefix black-text">search</i>
+                                       <input type="text" id="autocomplete-input" class="autocomplete">
+                                       <label for="autocomplete-input" style="color: #777">Sök</label>
+                                       
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </li>
+                   <li><a href="http://localhost:8080/products" class="black-text">Produkter</a></li>
+                   <li><a href="http://localhost:8080/index" class="black-text">Logga ut</a></li>
+               </ul>
+           </div>
+       </nav>
+   </header>
+
+    <div class="cart">
+        <div class="collapsible">
+        </div>
+    </div>
+   
+    
+
+   <!--Import jQuery before materialize.js-->
+   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+   <script src="js/cartScript.js"></script>
+
+</body>
+</html>
