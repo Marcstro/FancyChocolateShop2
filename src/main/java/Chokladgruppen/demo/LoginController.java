@@ -19,7 +19,8 @@ public class LoginController {
     @RequestMapping(method = RequestMethod.POST, value = "/test")
     @ResponseBody
     ResponseEntity<LoginReply> test(@RequestBody LoginPerson loginCheckPerson) {
-        // System.out.println("LoginController!");
+        System.out.println("LoginController!");
+        System.out.println(loginCheckPerson.getUserName());
         LoginReply lReply = new LoginReply();
         lReply.setUserName(loginCheckPerson.getUserName());
         lReply.setPassword(loginCheckPerson.getPassword());

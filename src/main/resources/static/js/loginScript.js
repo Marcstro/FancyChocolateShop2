@@ -15,7 +15,7 @@ $('#btnLogIn').click(function () {
         dataType: 'json',
         async: false,
         success: function (data) {
-            console.log("Inne i success!" + JSON.stringify(data));
+            console.log("Inne 1i success!" + JSON.stringify(data));
             $('.POST-test').append(data.userName);
             
         },
@@ -31,7 +31,7 @@ $('#btnLogIn').click(function () {
     $.ajax({
         url: "http://localhost:8080/testGet"
     }).then(function (data) {
-        console.log("Inne i funktionen - testGet");
+        console.log("Inne 2i funktionen - testGet");
         $('.GET-test').append(data);
     });
 });
@@ -42,7 +42,7 @@ $('#btnLogIn').click(function () {
     $.ajax({
         url: "http://localhost:8080/testGetJson"
     }).then(function (data) {
-        console.log("Inne i funktionen - testGetJson" + JSON.stringify(data));
+        console.log("Inne 3i funktionen - testGetJson" + JSON.stringify(data));
         $('.GETJson-test').append(data.userName);
     });
 });
