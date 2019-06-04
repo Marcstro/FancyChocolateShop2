@@ -8,7 +8,7 @@ public class LoginPerson {
     private String password;
 
     public LoginPerson() {
-        System.out.println("Du har kommit till loginpersons tomma constructor");
+        //System.out.println("Du har kommit till loginpersons tomma constructor");
     }
     
     public LoginPerson(String userName, String password) {
@@ -22,8 +22,9 @@ public class LoginPerson {
     }
 
     public void setUserName(String userName) {
-        System.out.println("och har ar metoden serusernamn");
+        //System.out.println("och har ar metoden serusernamn");
         this.userName = userName;
+        //this.userName="MarcusTestUserName";
     }
 
     public String getPassword() {
