@@ -30,6 +30,10 @@ public class ChocolateService {
          //return repository.findAll();
         //return repository.findAll();
     }
+     
+     Iterable<Chocolate> getChocolateByNameContainingIgnoreCase(String ord){
+         return repository.findByNameContainingIgnoreCase(ord);
+     }
     
 
 }

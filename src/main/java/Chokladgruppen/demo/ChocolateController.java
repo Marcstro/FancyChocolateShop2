@@ -33,5 +33,10 @@ public class ChocolateController {
     public Chocolate getChocolateyId(@PathVariable Long id){
         return service.getChocolate(id);
     }
+    
+    @GetMapping("/sokt/{ord}")
+    public Iterable<Chocolate> getSoughtChocolate(@PathVariable String ord){
+        return service.getChocolateByNameContainingIgnoreCase(ord);
+    }
 }
 

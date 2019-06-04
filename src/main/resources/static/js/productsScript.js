@@ -12,10 +12,49 @@ $(document).ready(function () {
 
 var listOfProducts = [];
 
+$('#resetSok').click(function () {
+    getChocolates();
+});
+
+$('#sokknapp').click(function () {
+    console.log("Klickat pa sak");
+    var sokt = $('#autocomplete-input').val()
+    console.log(sokt);
+//    listOfProducts=[];
+//    addChocolateCardElements();
+//    //document.querySelector("#divForChocolateCards").empty();//.empty();//.empty();
+    $("divForChocolateCards").empty();
+//    chocolateCardsDiv=null;
+    var myNode = document.getElementById("divForChocolateCards");
+    while (myNode.firstChild) {
+    myNode.removeChild(myNode.firstChild);
+    }
+    var urlen = "http://localhost:8080/Chocolates/sokt/" + sokt;
+    console.log(urlen);
+    //var urlen = "http://localhost:8080/Chocolates";
+    $.ajax({
+            url: urlen,
+        }).then(function (data) {
+            console.log(JSON.stringify(data));
+            console.log("test01");
+            listOfProducts=[];
+            console.log("Och sa har manga hittades:" + data.length);
+            for(var i=0; i<data.length; i++){
+            listOfProducts.push(data[i]);
+            }
+            // För att skapa chokladKorten
+            addChocolateCardElements();
+        });
+});
+
 function getChocolates() {
+    console.log($('#userName').val());
+    console.log("skriver ut saker");
     $.ajax({
         url: "http://localhost:8080/Chocolates"
     }).then(function (data) {
+        console.log("test02");
+        //console.log(JSON.stringify(data));
         listOfProducts = data;
         // För att skapa chokladKorten
         addChocolateCardElements();
@@ -42,6 +81,8 @@ const popUpContentDiv = document.querySelector("#popUpContent");
 
 // Skapar html för chocolateCards
 function addChocolateCardElements() {
+    console.log("du kom till addChocolateCardElements")
+    console.log(listOfProducts.length);
     listOfProducts.map((x, i) => {
         chocolateCardsDiv.innerHTML += `<div class="col s4 m4">`
                 + `<div class="card">`
