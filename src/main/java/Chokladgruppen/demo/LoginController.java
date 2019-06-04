@@ -18,13 +18,8 @@ public class LoginController {
     // Denna kan nu returnera en json.
     @RequestMapping(method = RequestMethod.POST, value = "/test")
     @ResponseBody
-    ResponseEntity<LoginReply> test(@RequestBody LoginPerson loginCheckPerson) {
-        System.out.println("LoginController!");
-        System.out.println(loginCheckPerson.getUserName());
-        LoginReply lReply = new LoginReply();
-    ResponseEntity<loginReply> test(@RequestBody LoginPerson loginCheckPerson) {
-        // System.out.println("LoginController!");
-        loginReply lReply = new loginReply();
+    ResponseEntity<LoginReplyA> test(@RequestBody LoginPerson loginCheckPerson) {
+        LoginReplyA lReply = new LoginReplyA();
         lReply.setUserName(loginCheckPerson.getUserName());
         lReply.setPassword(loginCheckPerson.getPassword());
         return ResponseEntity.ok(lReply);
@@ -43,9 +38,9 @@ public class LoginController {
     // Returnerar en Json
     @RequestMapping(method = RequestMethod.GET, value = "/testGetJson")
     @ResponseBody
-    public loginReply testGetJson() {
+    public LoginReplyA testGetJson() {
         System.out.println("Inne i testGetJson!");
-        loginReply lReply = new loginReply();
+        LoginReplyA lReply = new LoginReplyA();
         lReply.setUserName("JnyGetJson");
         lReply.setPassword("PassGetJson");
         return lReply;

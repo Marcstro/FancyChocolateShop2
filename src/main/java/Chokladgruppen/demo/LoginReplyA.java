@@ -2,8 +2,7 @@
 package Chokladgruppen.demo;
 
 
-// Detta namn som NetBeans klagar på ev. Vill att man ska döpa om i terminalen/commandline
-public class loginReply {
+public class LoginReplyA {
     
     private String userName;
     private String password;
@@ -43,6 +42,5 @@ public class loginReply {
 //    public void setPageProducts(String pageProducts) {
 //        this.pageProducts = pageProducts;
 //    }
-    
-    
+     
 }
