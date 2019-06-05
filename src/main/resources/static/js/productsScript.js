@@ -75,8 +75,8 @@ const chocolateCardsDiv = document.querySelector("#divForChocolateCards");
 const popUpContentDiv = document.querySelector("#popUpContent");
 // Skapar html för chocolateCards
 function addChocolateCardElements() {
-    console.log("du kom till addChocolateCardElements")
-    console.log(listOfProducts.length);
+    // console.log("du kom till addChocolateCardElements");
+    // console.log(listOfProducts.length);
     listOfProducts.map((x, i) => {
         chocolateCardsDiv.innerHTML += `<div class="col s4 m4">`
         + `<div class="card">`

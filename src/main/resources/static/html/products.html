@@ -38,7 +38,7 @@
                         </li>
                         <li><a id="resetSok" class="black-text">Rensa</a></li>
                         <li><a id="goToCart" href="cart" class="black-text">Kundvagn</a></li>
-                        <li><a href="http://localhost:8080/index" class="black-text">Logga in</a></li>
+                        <li><a href="index" class="black-text">Logga ut</a></li>
                     </ul>
                 </div>
             </nav>
@@ -74,10 +74,14 @@
         </section>
 
         <section>
-            <h5 class="dreamyFont3">När du är klar med dina val:</h5>
-            <!--Här borde det stå hur mycket man handlat för hittills 
-            --> 
-            <button id="btnGoToCart" class="btn waves-effect waves-light" type="button" name="action"><a style="color: white;" href="cart">Cartsidan</a></button>
+            <div class="row">
+                <div class="col s12 m5 offset-m3 l5 offset-l3 xl5 offset-xl3">
+                    <p class="dreamyFont3">När du är klar med dina val:</p>
+                </div>
+                <div class="col s12 m5 offset-m4 l5 offset-l4 xl5 offset-xl4">
+                    <button id="btnGoToCart" class="btn waves-effect waves-light" type="button" name="action"><a style="color: white;" href="cart">Till kundvagnen</a></button>
+                </div>
+            </div>
         </section>
         
         <!--Import jQuery before materialize.js-->
