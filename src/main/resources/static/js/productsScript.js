@@ -112,28 +112,62 @@ function addPopUpContent(id) {
 };
 
 
-// Arrayen tömdes när popupen stängdes. Pga att sidan laddas om då?
-var cartArray = [];
-
-$("body").on("click", "#btnAddProductsToCart", function(){
-    console.log("Knappen funkar!");
+function saveCartAndPersonToStorage(){
+    
+    var currentObj = listOfProducts[currentPopUp];
     var amount = $('#productAmount').val();
-    console.log("amount: " + amount);
-    console.log(JSON.stringify(listOfProducts[currentPopUp]));
+    currentObj.amount = amount;
+   
+    var ObjAsString = JSON.stringify(currentObj);
+    // Varje key får ett nummer för att vara unik
+    if (sessionStorage.length > 0){
+        sessionStorage.setItem("products"+sessionStorage.length, ObjAsString);
+    }
+    else {
+        sessionStorage.setItem("products0", ObjAsString);
+    }
     
-    // Här sparar man allt i en array. Sedan när man klickar på köp skickas
-    // hela listan till servern
-    // Kolla om produkten redan finns. Lägga till antalet då, bara.
+    // -- ANVÄND INLOGGAD PERSON SEDAN --
+//    var person = JSON.stringify({name: "anna", password: "pass"});
+//    sessionStorage.setItem("loggedInPerson", person);
+    // console.log("person: " + JSON.stringify(person));
     
-    cartArray.push(listOfProducts[currentPopUp]);
-    // console.log("Arrayen: " + JSON.stringify(cartArray));
-    
-    cartArray.map((x, i)=>{
-        console.log("Arrayen: index " + i + ": " + x);
-    });
-});
+}
 
 
 $("body").on("click", "#btnAddProductsToCart", function(){
-    console.log("Arrayens längd: " + cartArray.length); // < read the length of the amended array here
+    saveCartAndPersonToStorage();
 });
+
+$('#goToCart').click(function () {
+    saveCartAndPersonToStorage();
+});
+
+// När man klickar på kundvagn i headern sparas ett customerAndCart-obj i
+// sessionStorage, som kan användas av cart sedan.
+//// (Egentligen kanske detta inte behöver göras förrän i cart, när man ska skicka till servern)
+//$('#goToCart').click(function () {
+//    
+//    console.log("Inne i goToCart!");
+//    
+//    // Först hämta kundvagns-arrayen 
+//    var cartArray = [];
+//    for (i = 0; i < sessionStorage.length; i++){   
+//        cartArray.push(JSON.parse(sessionStorage.getItem("products"+i)));
+////        console.log("cartArray: " + cartArray[i].name);
+////        console.log("cartArrayStringify: " + JSON.stringify(cartArray[i]));
+//        console.log("cartArray, length: " + cartArray.length);
+//    }
+//    
+//    // -- ANVÄND INLOGGAD PERSON SEDAN --
+//    var person = {name: "jny", password: "pass"};
+//    // console.log("person: " + JSON.stringify(person));
+//    
+//    // Skapa CustomerAndCart
+//    var customerAndCart = {person, cartArray};
+//    // console.log("customerAndCart: " + JSON.stringify(customerAndCart));
+// 
+//    // Sparar denna i sessionStorage
+// 
+//});
+

@@ -15,7 +15,7 @@ $('#btnLogIn').click(function () {
         dataType: 'json',
         async: false,
         success: function (data) {
-            console.log("Inne 1i success!" + JSON.stringify(data));
+            // console.log("Inne i success!" + JSON.stringify(data));
             $('.POST-test').append(data.userName);
             
         },

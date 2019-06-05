@@ -36,9 +36,9 @@
                                 </div>
                             </div>
                         </li>
-                        <li><a href="cart" class="black-text">Kundvagn</a></li>
+                        <li><a id="resetSok" class="black-text">Rensa</a></li>
+                        <li><a id="goToCart" href="cart" class="black-text">Kundvagn</a></li>
                         <li><a href="http://localhost:8080/index" class="black-text">Logga in</a></li>
-                        <li><a href="http://localhost:8080/index" class="black-text">Logga ut</a></li>
                     </ul>
                 </div>
             </nav>
@@ -73,7 +73,13 @@
             </div>
         </section>
 
-
+        <section>
+            <h5 class="dreamyFont3">När du är klar med dina val:</h5>
+            <!--Här borde det stå hur mycket man handlat för hittills 
+            --> 
+            <button id="btnGoToCart" class="btn waves-effect waves-light" type="button" name="action"><a style="color: white;" href="cart">Cartsidan</a></button>
+        </section>
+        
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
