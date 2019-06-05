@@ -34,12 +34,14 @@ $('#btnLogIn').click(function () {
         method: 'POST',             
             //data: JSON.stringify({"name": $('#firstName').val()}),
             
-            data: JSON.stringify({"name": helnamn, 
+            data: JSON.stringify({
+                "name": helnamn, 
                 "userName": $('#username').val(),
                 "password": $('#password').val(),
                 "address": $('#address').val(),
             }),
             contentType: "application/json; charset=utf-8",
+            //contentType: Object
             dataType: "json",
             async: false,
             
