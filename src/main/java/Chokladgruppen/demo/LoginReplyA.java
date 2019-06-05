@@ -1,12 +1,8 @@
 
 package Chokladgruppen.demo;
 
-import lombok.ToString;
 
-
-// Detta namn som NetBeans klagar på ev. Vill att man ska döpa om i terminalen/commandline
-@ToString
-public class loginReply {
+public class LoginReplyA {
     
     private String userName;
     private String password;
@@ -21,7 +17,6 @@ public class loginReply {
 
     public void setUserName(String userName) {
         this.userName = userName;
-        //this.userName="MarcusSattUserName i loginreply";
     }
 
     public String getPassword() {
@@ -47,6 +42,5 @@ public class loginReply {
 //    public void setPageProducts(String pageProducts) {
 //        this.pageProducts = pageProducts;
 //    }
-    
-    
+     
 }

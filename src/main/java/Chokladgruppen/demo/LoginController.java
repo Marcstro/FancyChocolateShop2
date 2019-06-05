@@ -71,9 +71,9 @@ public class LoginController {
     // Returnerar en Json
     @RequestMapping(method = RequestMethod.GET, value = "/testGetJson")
     @ResponseBody
-    public loginReply testGetJson() {
+    public LoginReplyA testGetJson() {
         System.out.println("Inne i testGetJson!");
-        loginReply lReply = new loginReply();
+        LoginReplyA lReply = new LoginReplyA();
         lReply.setUserName("JnyGetJson");
         lReply.setPassword("PassGetJson");
         return lReply;
