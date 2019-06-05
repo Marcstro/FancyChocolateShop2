@@ -113,7 +113,13 @@ function addEventListenerRemove(counter) {
 }
 
 function thankYou() {
-    document.querySelector(".collapsible").innerHTML = "Tack för ditt köp!!";
+    document.querySelector(".collapsible").innerHTML = "";
+    document.querySelector(".thankYou").innerHTML = 
+                `<div class="row">
+                    <div class="col s12 m8 offset-m3 l8 offset-l3 xl8 offset-xl3">
+                        <p class="dreamyFont3">Tack för ditt köp! Välkommen åter!</p>
+                    </div>
+                </div>`;
 }
 
 function updateAmount(counter) {

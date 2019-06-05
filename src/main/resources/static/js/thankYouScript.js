@@ -1,5 +1,0 @@
-/* 
- * Javautveckling 2018
- */
-
-
