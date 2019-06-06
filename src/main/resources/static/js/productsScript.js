@@ -9,12 +9,19 @@ $(document).ready(function () {
 var listOfProducts = [];
 
 $('#resetSok').click(function () {
+    // Ta bort de taggar som redan finns
+    // Detta funkar inte
+    // chocolateCardsDiv.innerHTML = "";
+    // popUpContentDiv.innerHTML = "";
+    $('#divForChocolateCards').empty();
+    $('#popUpContent').empty();
     getChocolates();
 });
 
+
 $('#sokknapp').click(function () {
     console.log("Klickat pa sak");
-    var sokt = $('#autocomplete-input').val()
+    var sokt = $('#autocomplete-input').val();
     console.log(sokt);
 //    listOfProducts=[];
 //    addChocolateCardElements();
@@ -43,13 +50,13 @@ $('#sokknapp').click(function () {
         });
 });
 
+
 function getChocolates() {
     console.log($('#userName').val());
     console.log("skriver ut saker");
     $.ajax({
     url: "http://localhost:8080/Chocolates"
     }).then(function (data) {
-        console.log("test02");
         //console.log(JSON.stringify(data));
         listOfProducts = data;
         // För att skapa chokladKorten
@@ -161,6 +168,7 @@ function saveCartAndPersonToStorage(){
     currentObj.amount = amount;
    
     var ObjAsString = JSON.stringify(currentObj);
+    console.log(JSON.stringify(currentObj));
     // Varje key får ett nummer för att vara unik
     if (sessionStorage.length > 0){
         sessionStorage.setItem("products"+sessionStorage.length, ObjAsString);
@@ -168,12 +176,6 @@ function saveCartAndPersonToStorage(){
     else {
         sessionStorage.setItem("products0", ObjAsString);
     }
-    
-    // -- ANVÄND INLOGGAD PERSON SEDAN --
-//    var person = JSON.stringify({name: "anna", password: "pass"});
-//    sessionStorage.setItem("loggedInPerson", person);
-    // console.log("person: " + JSON.stringify(person));
-    
 }
 
 

@@ -25,7 +25,7 @@ function getCart() {
         }
 //        console.log("getCart: " + sessionStorage.getItem("products"+i));
 //        console.log("getCart_productsInCart: " + productsInCart[i]);
-//        console.log("getCart_length: " + productsInCart.length);
+        console.log("getCart, length: " + productsInCart.length);
     }
     getProducts();
 }
