@@ -1,8 +1,4 @@
-
-
-
 $('#btnLogIn').click(function () {
-
     $.ajax({
         //url: 'http://localhost:8080/test',
         url: '/login',
@@ -15,38 +11,29 @@ $('#btnLogIn').click(function () {
         // -- berättar vilken typ av data vi får tillbaka
         dataType: 'json',
         async: false,
+
+        //Finns inte personen är data3 null och en hamnar i error som skriver ut ett felmeddelande
         success: function (data3) {
-            if(!$.trim(data3) || !(data3) || data3 === undefined){
-                
-                //EDIT HUGE FROM MARCUS
-                //THIS POINT IS NEVER REACHED
-                //data3 cant be null apparently
-                //instead if you type wrong pw or username
-                //you get to the error catcher 
-                
-                console.log("Wrong password or username1!");
-                $('.POST-test').empty();
-                $('.POST-test').append("No that's either incorrect name or password!marcustest21");
-            }
-            else{
-            console.log("Inne 1i success!" + JSON.stringify(data3));
-            //$('#VisaMedelande').append("testarmarc");//text("");
-            //$('#VisaMedelande').text($("testarmarc").val());
+            console.log("Inne i success!" + JSON.stringify(data3));
             $('.POST-test').empty();
             $('.POST-test').append("Successfully logged in!");
-            
+
             //OBS OBS 
             //HERE WE ADD THE CODE
             //TO ACCEPT THE PERSON OBJECT THAT WAS SENT BECAUSE HE LOGGED IN CORRECTLY
             //TODO
             sessionStorage.setItem("loggedInPerson", JSON.stringify(data3));
-            console.log("Nu loggade " + sessionStorage.getItem("loggedInPerson") + " in");
+
+            if (data3.admin === true) {
+                window.open("/admin", "_self");
+            } else {
+                window.open("/products", "_self");
             }
-            
         },
         error: function (jqXHR, textStatus, errorThrown) {
             $('.POST-test').empty();
             $('.POST-test').append("No that's either incorrect name or password!");
+            document.querySelector(".errorMessage").innerHTML = "Felaktigt användarnamn eller lösen!";
             console.log(JSON.stringify("textStatus: " + textStatus));
         }
     });
