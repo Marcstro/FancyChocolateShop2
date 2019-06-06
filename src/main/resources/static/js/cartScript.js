@@ -114,9 +114,13 @@ function addEventListenerRemove(counter) {
 
 function thankYou() {
     
-
-    if(sessionStorage.getItem("loggedInPerson") !== null || sessionStorage.getItem("loggedInPerson") !== undefined ){
-        
+    console.log(sessionStorage.getItem("loggedInPerson"));
+    var a =1;
+    if(sessionStorage.getItem("loggedInPerson")){
+        a++;
+    }
+    //if(sessionStorage.getItem("loggedInPerson") !== null || sessionStorage.getItem("loggedInPerson") !== undefined ){
+     if(a>1){   
     console.log("Du har korrekt kommit in i thankYou, som ar kop-funktionen");
     document.querySelector(".collapsible").innerHTML = "Tack för ditt köp!!";
     console.log("Nu handlade " + sessionStorage.getItem("loggedInPerson") + "!");
