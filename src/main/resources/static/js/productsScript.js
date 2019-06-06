@@ -201,7 +201,16 @@ $("body").on("click", "#btnAddProductsToCart", function(){
 });
 
 $('#goToCart').click(function () {
-    saveCartAndPersonToStorage();
+        if(sessionStorage.length > 1){
+        window.open("/cart", "_self");
+    }
+  
+});
+$('#btnGoToCart').click(function () {
+        if(sessionStorage.length > 1){
+        window.open("/cart", "_self");
+    }
+  
 });
 
 // När man klickar på kundvagn i headern sparas ett customerAndCart-obj i
