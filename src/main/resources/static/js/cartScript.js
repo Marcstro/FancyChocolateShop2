@@ -11,9 +11,10 @@ $(document).ready(function () {
 });
 
 
+// ANVÄNDS INTE, VA?
 function getCustomer() {
     var person = JSON.parse(sessionStorage.getItem("loggedInPerson"));
-    console.log("personFromStorage: " + JSON.stringify(person));
+    // console.log("personFromStorage: " + JSON.stringify(person));
 }
 
 function getCart() {
@@ -22,24 +23,15 @@ function getCart() {
         if (obj !== null){
             productsInCart.push(obj);
         }
-        console.log("getCart: " + sessionStorage.getItem("products"+i));
-        console.log("getCart_productsInCart: " + productsInCart[i]);
-        console.log("getCart_length: " + productsInCart.length);
+//        console.log("getCart: " + sessionStorage.getItem("products"+i));
+//        console.log("getCart_productsInCart: " + productsInCart[i]);
+//        console.log("getCart_length: " + productsInCart.length);
     }
-
-    // TEST! Denna ska väl användas på annat ställe sedan. 
-    // getCustomer();
-    // setTimeout(getProducts, 1000);
     getProducts();
-
 }
 
 
 function getProducts() {
-
-    console.log(productsInCart[0].name);
-    console.log("length: " + productsInCart.length);
-
     var ProductHTML = `<table class="highlight cartItems"><thead>
                             <tr class="row">
                                 <th class="cartColumnChocolate">Choklad</th>
@@ -52,10 +44,6 @@ function getProducts() {
     var counter = 0;
 
     productsInCart.map((x, i) => {
-        console.log("productsInCart: " + JSON.stringify(productsInCart));
-        console.log("length_in_map: " + productsInCart.length);
-        // console.log("x.name: " + x.name);
-        // console.log("counter: " + counter + "x: " + JSON.stringify(x)); 
         ProductHTML += `<tr class="row">
                             <td class="cartColumnChocolate"><p>${x.name}</p></td>
                             <td class="cartColumn"><p>${x.price}</p></td>
@@ -107,7 +95,24 @@ function getProducts() {
 }
 
 function addEventListenerRemove(counter) {
-    productsInCart = productsInCart.slice(0, counter).concat(productsInCart.slice(counter + 1));
+    // productsInCart = productsInCart.slice(0, counter).concat(productsInCart.slice(counter + 1));
+//    for (i = 0; i < sessionStorage.length; i++) {
+//        var obj = JSON.parse(sessionStorage.getItem("products" + i));
+//        if (obj !== null){
+//            productsInCart.push(obj);
+//        }
+//        console.log("getCart: " + sessionStorage.getItem("products"+i));
+//        console.log("getCart_productsInCart: " + productsInCart[i]);
+//        console.log("getCart_length: " + productsInCart.length);
+//    }
+    
+    console.log("längd före: " + sessionStorage.length);
+    console.log("Lista före: " + JSON.stringify(getProducts()));
+    console.log("Borttagen choklad: " + JSON.parse(sessionStorage.getItem("products" + counter)));
+    sessionStorage.removeItem("products" + counter);
+    console.log("längd efter: " + sessionStorage.length);
+    console.log("lista efter: " + JSON.stringify(getProducts()));
+    
     document.querySelector(".collapsible").innerHTML = "";
     getProducts();
 }
