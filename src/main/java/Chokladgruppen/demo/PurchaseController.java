@@ -53,7 +53,7 @@ public class PurchaseController {
         Orders nyOrder=new Orders(purchase.getPerson());
         orderService.repository.save(nyOrder);
         for(int x=0; x<purchase.getChocolates().size(); x++){
-            
+            System.out.println("Nu gar for lopen igenom " + x);
             OrderDetails nyOrderDetails = new OrderDetails(purchase.getChocolates().get(x).getAmount(),
             purchase.getChocolates().get(x),
             nyOrder);
