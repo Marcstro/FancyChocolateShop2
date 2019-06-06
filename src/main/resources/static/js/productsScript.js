@@ -8,8 +8,27 @@ $(document).ready(function () {
 
 var listOfProducts = [];
 
-$('#resetSok').click(function () {
-    getChocolates();
+//$('#resetSok').click(function () {
+//    //$("divForChocolateCards").empty();
+//    var myNode = document.getElementById("divForChocolateCards");
+//    while (myNode.firstChild) {
+//    myNode.removeChild(myNode.firstChild);
+//    }
+//    getChocolates();
+//});
+
+$("#resetSok").click(function () {
+
+   // Ta bort de taggar som redan finns
+
+   $("#divForChocolateCards").empty();
+
+   $("#popUpContent").empty();
+
+   // Lägga dit chokladerna igen
+
+   getChocolates();
+
 });
 
 $('#sokknapp').click(function () {
