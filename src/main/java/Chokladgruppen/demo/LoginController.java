@@ -40,7 +40,7 @@ public class LoginController {
         
         for(Person p: personService.getAllPerson()){
             //System.out.println(p.getUserName() + ", " + p.getPassword());
-            if(loginCheckPerson.getUserName().equalsIgnoreCase(p.getUserName())){
+            if(loginCheckPerson .getUserName().equalsIgnoreCase(p.getUserName())){
                 if(loginCheckPerson.getPassword().equalsIgnoreCase(p.getPassword())){
                     p2=p;
                     System.out.print("Korrekt user and pw, logged in as:");

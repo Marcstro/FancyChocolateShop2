@@ -73,13 +73,21 @@ public class PurchaseController {
             System.out.println("The final number:" + theFinalAmount);
             
             chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).setInStock(theFinalAmount);
+            System.out.println(chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).getInStock());
 //            chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).setInStock(
 //            ((chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).getInStock())
 //                            -(purchase.getChocolates().get(x).getAmount())));
 //            
 //           
-                    
+                    if(x==purchase.getChocolates().size()-1){
+                        System.out.println("extrametoden tillakllades");
+                        chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).setInStock(5);
+                    }
         }
+//        int x=purchase.getChocolates().size();
+//                    chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).setInStock(
+//            ((chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).getInStock())
+//                            -(purchase.getChocolates().get(x).getAmount())));
         }
         //System.out.println(purchase.getChocolates().toString());
         
