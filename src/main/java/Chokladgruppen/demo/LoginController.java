@@ -28,12 +28,8 @@ public class LoginController {
     @RequestMapping(method = RequestMethod.POST, value = "/login")
     @ResponseBody
     ResponseEntity<Person> CheckNameAndPWForLogin(@RequestBody LoginPerson loginCheckPerson) {
-        System.out.println("LoginController!");
-        System.out.println("Du har forsokt logga in som "  + loginCheckPerson.getUserName());
-       
         return ResponseEntity.ok(personService.findPersonByName(loginCheckPerson.getUserName(), loginCheckPerson.getPassword()));
     }
-
     
     // Returnerar en String
     @RequestMapping(method = RequestMethod.GET, value = "/testGet")
