@@ -24,6 +24,7 @@ public class LoginController {
     }
 
     // Denna kan nu returnera en json.
+    //Retrunerar en person, null om personen inte finns
     @RequestMapping(method = RequestMethod.POST, value = "/login")
     @ResponseBody
     ResponseEntity<Person> CheckNameAndPWForLogin(@RequestBody LoginPerson loginCheckPerson) {
@@ -55,16 +56,16 @@ public class LoginController {
 //        }
 
         
-        return ResponseEntity.ok(p2);
+        //return ResponseEntity.ok(p2);
+        return ResponseEntity.ok(personService.findPersonByName(loginCheckPerson.getUserName(), loginCheckPerson.getPassword()));
     }
-
     
     // Returnerar en String
     @RequestMapping(method = RequestMethod.GET, value = "/testGet")
     @ResponseBody
     public String test() {
-        // System.out.println("Inne i test! (Get)");
-        return "jny";
+        System.out.println("Inne i test! (Get)");
+        return "html/products.html";
     }
     
     
