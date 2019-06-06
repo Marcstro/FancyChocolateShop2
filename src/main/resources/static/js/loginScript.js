@@ -39,6 +39,8 @@ $('#btnLogIn').click(function () {
             //HERE WE ADD THE CODE
             //TO ACCEPT THE PERSON OBJECT THAT WAS SENT BECAUSE HE LOGGED IN CORRECTLY
             //TODO
+            sessionStorage.setItem("loggedInPerson", JSON.stringify(data3));
+            console.log("Nu loggade " + sessionStorage.getItem("loggedInPerson") + " in");
             }
             
         },

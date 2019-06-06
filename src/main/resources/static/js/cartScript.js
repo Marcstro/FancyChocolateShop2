@@ -118,13 +118,72 @@ function addEventListenerRemove(counter) {
 }
 
 function thankYou() {
-    document.querySelector(".collapsible").innerHTML = "";
-    document.querySelector(".thankYou").innerHTML = 
-                `<div class="row">
-                    <div class="col s12 m8 offset-m3 l8 offset-l3 xl8 offset-xl3">
-                        <p class="dreamyFont3">Tack för ditt köp! Välkommen åter!</p>
-                    </div>
-                </div>`;
+    
+    console.log(sessionStorage.getItem("loggedInPerson"));
+    var a =1;
+    if(sessionStorage.getItem("loggedInPerson")){
+        a++;
+    }
+    //if(sessionStorage.getItem("loggedInPerson") !== null || sessionStorage.getItem("loggedInPerson") !== undefined ){
+     if(a>1){   
+    console.log("Du har korrekt kommit in i thankYou, som ar kop-funktionen");
+    document.querySelector(".collapsible").innerHTML = "Tack för ditt köp!!";
+    console.log("Nu handlade " + sessionStorage.getItem("loggedInPerson") + "!");
+    
+    
+    var choklader = [];
+
+    for (i = 0; i < sessionStorage.length; i++) {
+          var obj = JSON.parse(sessionStorage.getItem("products" + i));
+          if (obj !== null && !obj.hasOwnProperty('userName')){
+              choklader.push(obj);
+          }
+    }
+    console.log(choklader);
+    
+    $.ajax({
+        url: '/purchase',
+        method: 'POST',             
+            //data: JSON.stringify({"name": $('#firstName').val()}),
+            
+            data: JSON.stringify({
+                "person": JSON.parse(sessionStorage.getItem("loggedInPerson")), 
+                "chocolates": choklader,
+            }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            
+            success: function(kopet){
+                $('.GETJson-test').append("Added data03");
+                if(kopet.correct) {
+                    //$('.result-message').empty().append("The result is correct! Congratulations!");
+                    console.log("registrationscript.js fungerade");
+                    console.log("du kom in i success: worked");
+                    //$('.GETJson-test').append("Added data01");
+                     logOut();
+                } else {
+                   // $('.result-message').empty().append("Ooops that's not correct! But keep trying!");
+                   console.log("registrationscript.js fungerade");
+                   console.log("du kom in i success: else");
+                   
+                   logOut();
+                   //$('.GETJson-test').append("Added data02");
+                }
+                //HERE WE NEED TO CLEAR CART
+            }
+        });
+    }
+    else{
+        console.log("OBS ingen inloggad person!");
+    }
+            
+    
+}
+
+function logOut(){
+    sessionStorage.setItem("loggedInPerson",null);
+    sessionStorage.clear();
 }
 
 function updateAmount(counter) {
