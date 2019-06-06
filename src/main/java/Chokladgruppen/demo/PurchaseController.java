@@ -60,12 +60,24 @@ public class PurchaseController {
             orderDetailsService.repository.save(nyOrderDetails);
             
             //This changes the amount of chocolates in the database
+            System.out.println(chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).getInStock());
+            System.out.println((purchase.getChocolates().get(x).getAmount()));
             
-            chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).setInStock(
-            ((chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).getInStock())
-                            -(purchase.getChocolates().get(x).getAmount())));
+            System.out.println((chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).getInStock())
+                    -(purchase.getChocolates().get(x).getAmount()));
             
-           
+            
+            int initialAmount=chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).getInStock();
+            int amountToRemove=purchase.getChocolates().get(x).getAmount();
+            int theFinalAmount=initialAmount-amountToRemove;
+            System.out.println("The final number:" + theFinalAmount);
+            
+            chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).setInStock(theFinalAmount);
+//            chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).setInStock(
+//            ((chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).getInStock())
+//                            -(purchase.getChocolates().get(x).getAmount())));
+//            
+//           
                     
         }
         }
