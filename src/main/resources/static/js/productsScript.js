@@ -60,8 +60,7 @@ function getChocolates() {
         // För att skapa chokladKorten
         addChocolateCardElements();
     });
-}
-;
+};
 
 
 // Element att lägga choklad-korten i
@@ -70,8 +69,6 @@ const chocolateCardsDiv = document.querySelector("#divForChocolateCards");
 const popUpContentDiv = document.querySelector("#popUpContent");
 // Skapar html för chocolateCards
 function addChocolateCardElements() {
-    // console.log("du kom till addChocolateCardElements");
-    // console.log(listOfProducts.length);
     listOfProducts.map((x, i) => {
         chocolateCardsDiv.innerHTML += `<div class="col s4 m4">`
                 + `<div class="card">`
@@ -141,8 +138,7 @@ function addPopUpContent(id) {
                     + `</div>`;
         }
     });
-}
-;
+};
 
 
 function saveCartAndPersonToStorage() {
@@ -153,72 +149,43 @@ function saveCartAndPersonToStorage() {
 
     var ObjAsString = JSON.stringify(currentObj);
     console.log("ska läggas till i storage: " + JSON.stringify(currentObj));
-    // Varje key får ett nummer för att vara unik
-//    if (sessionStorage.length > 0){
-//        sessionStorage.setItem("products"+sessionStorage.length, ObjAsString);
-//    }
-//    else {
-//        sessionStorage.setItem("products0", ObjAsString);
-//    }
 
-
-    // Varje key får ett nummer för att vara unik
-    // Men! Det kan finnas chokladobj i sessionStorage redan
-
-    // Skapa array med alla keys
+    // Skapa array med alla key-namn, för att jämföra med
     var keyNamesArray = [];
     for (i = 0; i < sessionStorage.length; i++) {
         var keyName = sessionStorage.key(i);
-
         if (keyName !== "loggedInPerson"){
             keyNamesArray.push(keyName);
-            console.log(i + ". in i keyNamesArray: " + keyName);
         }
-//        keyNamesArray.push(sessionStorage.key("products" + i));
-//        console.log("in i key-arrayen: " + sessionStorage.key("products" + i));
     }
 
     var counter = 0;  // var counter = sessionStorage.length;
     var objectIsSet = false;
-    // Sätt bara key-namn som inte finns i arrayen
     var keyNameSuggestionIsInArray = false;
-    // var uniqueName = null;
 
     while (!objectIsSet) {
-        
         var keyNameSuggestion = "products" + counter;
-        console.log("förslag på nytt key name: " + keyNameSuggestion);
-
+        
         if (keyNamesArray.length === 0) {
              console.log("keyNamesArray  är tom!");
         } 
         else if (keyNamesArray.length > 0) {
-            // Denna ska bara kolla om det föreslagna namnet finns i arrayen
+            // Kolla om det föreslagna namnet finns i arrayen
             for (i = 0; i < keyNamesArray.length; i++) {
-                console.log("keyNamesArray[i]: " + keyNamesArray[i]);
-                // keyNamesArray[i] === keyNameSuggestion
-                // string1.localeCompare(string2) == 0
                 if (keyNamesArray[i].localeCompare(keyNameSuggestion) === 0){
-                    console.log("Har hittat match på namnen");
-                    console.log("keyNamesArray[i]: " + keyNamesArray[i] + " keyNameSuggestion: " + keyNameSuggestion);
                     keyNameSuggestionIsInArray = true;
-                    console.log("i for-loopen, keyNameSuggestionIsInArray: " + keyNameSuggestionIsInArray);
                 }
             }
         }
 
         // Om det förslagna namnet inte fanns i arrayen, lägg till i Storage
         if (!keyNameSuggestionIsInArray){
-            console.log("Lägger till objektet!");
             sessionStorage.setItem(keyNameSuggestion, ObjAsString);
             objectIsSet = true;
         } else if (keyNameSuggestionIsInArray) {
-            console.log("lägger till på counter");
             counter++;
             keyNameSuggestionIsInArray = false;
         }
-        
-        console.log("array-längden: " + keyNamesArray.length);
     }
 }
 
@@ -228,7 +195,15 @@ $("body").on("click", "#btnAddProductsToCart", function () {
 });
 
 $('#goToCart').click(function () {
-    saveCartAndPersonToStorage();
+    if(sessionStorage.length > 1){
+        window.open("/cart", "_self");
+    }
+});
+
+$('#btnGoToCart').click(function () {
+    if(sessionStorage.length > 1){
+        window.open("/cart", "_self");
+    }
 });
 
 

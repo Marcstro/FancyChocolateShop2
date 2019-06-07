@@ -52,12 +52,18 @@ public class PurchaseController {
         
         Orders nyOrder=new Orders(purchase.getPerson());
         orderService.repository.save(nyOrder);
-        for(int x=0; x<purchase.getChocolates().size(); x++){
+        for(int x=0; x<purchase.getChocolates().size()+1; x++){
+            if(x==purchase.getChocolates().size()){
+                return true;
+            }
+            //if(!((x+1)<purchase.getChocolates().size())){
             System.out.println("Nu gar for lopen igenom " + x);
-            OrderDetails nyOrderDetails = new OrderDetails(purchase.getChocolates().get(x).getAmount(),
-            purchase.getChocolates().get(x),
-            nyOrder);
-            orderDetailsService.repository.save(nyOrderDetails);
+//            OrderDetails nyOrderDetails = new OrderDetails(purchase.getChocolates().get(x).getAmount(),
+//            purchase.getChocolates().get(x),
+//            nyOrder);
+//            orderDetailsService.repository.save(nyOrderDetails);
+            
+            
             
             //This changes the amount of chocolates in the database
             System.out.println(chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).getInStock());
@@ -73,13 +79,27 @@ public class PurchaseController {
             System.out.println("The final number:" + theFinalAmount);
             
             chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).setInStock(theFinalAmount);
+            System.out.println(chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).getInStock());
 //            chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).setInStock(
 //            ((chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).getInStock())
 //                            -(purchase.getChocolates().get(x).getAmount())));
 //            
 //           
-                    
+            OrderDetails nyOrderDetails = new OrderDetails(purchase.getChocolates().get(x).getAmount(),
+            purchase.getChocolates().get(x),
+            nyOrder);
+            orderDetailsService.repository.save(nyOrderDetails);
+            
+//                    if(x==purchase.getChocolates().size()-1){
+//                        System.out.println("extrametoden tillakllades");
+//                        chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).setInStock(5);
+//                    }
         }
+//        int x=purchase.getChocolates().size();
+//                    chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).setInStock(
+//            ((chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).getInStock())
+//                            -(purchase.getChocolates().get(x).getAmount())));
+        //}
         }
         //System.out.println(purchase.getChocolates().toString());
         

@@ -24,7 +24,6 @@ function getCart() {
             productsInCart.push(obj);
             console.log(i + ". Obj som läggs till: " + sessionStorage.key(i));
         }
-
     }
     getProducts();
 }
@@ -119,9 +118,7 @@ function addEventListenerRemove(counter, x) {
             }
         }
     }
-    // Tömma elementet som ska fyllas. Denna funkar.
     $('.collapsible').empty();
-    // Fylla på element och choklader igen
     getCart();  
 }
 

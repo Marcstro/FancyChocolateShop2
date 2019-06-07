@@ -28,6 +28,35 @@ public class LoginController {
     @RequestMapping(method = RequestMethod.POST, value = "/login")
     @ResponseBody
     ResponseEntity<Person> CheckNameAndPWForLogin(@RequestBody LoginPerson loginCheckPerson) {
+        System.out.println("LoginController!");
+        System.out.println("Du har forsokt logga in som "  + loginCheckPerson.getUserName());
+        // System.out.println("LoginController!");
+//        loginReply lReply = new loginReply();
+//        lReply.setUserName(loginCheckPerson.getUserName());
+//        lReply.setPassword(loginCheckPerson.getPassword());
+//        System.out.println(lReply.toString());
+        //System.out.println(loginCheckPerson.getUserName());
+        
+        Person p2 = null;
+        
+        for(Person p: personService.getAllPerson()){
+            //System.out.println(p.getUserName() + ", " + p.getPassword());
+            if(loginCheckPerson .getUserName().equalsIgnoreCase(p.getUserName())){
+                if(loginCheckPerson.getPassword().equalsIgnoreCase(p.getPassword())){
+                    p2=p;
+                    System.out.print("Korrekt user and pw, logged in as:");
+                    System.out.println(p.getName());
+                    break;
+                }
+            }
+        }
+//        if(p2==null){
+//            p2=new Person();
+//            p2.setUserName("WRONG");
+//        }
+
+        
+        //return ResponseEntity.ok(p2);
         return ResponseEntity.ok(personService.findPersonByName(loginCheckPerson.getUserName(), loginCheckPerson.getPassword()));
     }
     
