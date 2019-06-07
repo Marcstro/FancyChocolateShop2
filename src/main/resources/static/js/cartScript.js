@@ -4,11 +4,6 @@ $(document).ready(function () {
     getCart();
 });
 
-// ANVÄNDS INTE, VA?
-function getCustomer() {
-    var person = JSON.parse(sessionStorage.getItem("loggedInPerson"));
-}
-
 function getCart() {
     productsInCart.length = 0;
     for (i = 0; i < sessionStorage.length; i++) {
@@ -51,12 +46,9 @@ function getProducts() {
         totalSum += x.price * x.amount;
     });
 
+    //Om det sedan ska läggas till premiumkunder kan en kolla det och ge rabatt här
     var discount = 0;
     var sumToPay = totalSum;
-    if (true) {
-        discount = 10;
-        sumToPay = (totalSum * 0.9).toFixed(2);
-    }
 
     totalSum = (totalSum).toFixed(2);
 
