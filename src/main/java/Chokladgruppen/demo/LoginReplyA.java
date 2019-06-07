@@ -1,16 +1,11 @@
-
 package Chokladgruppen.demo;
 
-
 public class LoginReplyA {
-    
+
     private String userName;
     private String password;
     private String loginStatus;
-    // private String pageProducts = "html/products.html";
 
-    
-    
     public String getUserName() {
         return userName;
     }
@@ -34,13 +29,4 @@ public class LoginReplyA {
     public void setLoginStatus(String loginStatus) {
         this.loginStatus = loginStatus;
     }
-
-//    public String getPageProducts() {
-//        return pageProducts;
-//    }
-//
-//    public void setPageProducts(String pageProducts) {
-//        this.pageProducts = pageProducts;
-//    }
-     
 }

@@ -30,18 +30,3 @@ h4 {
     border-bottom: 1px solid black !important;
     box-shadow: 0 1px 0 0 black !important;
 }
-
- /*Ett försök att få bilderna lika stora*/
-/*.card-image {
-    max-height: 100px;
-    width: auto;
-    background-size: contain;
-    border: 1px solid red;
-}
-
-.chocolateImages {
-    max-height: 100px;
-    width: auto;
-    background-size: contain;
-    border: 1px solid green;
-}*/

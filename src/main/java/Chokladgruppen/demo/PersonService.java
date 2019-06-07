@@ -10,14 +10,11 @@ public class PersonService {
     PersonRepository repository;
 
     Person getPerson(long id) {
-        //return repository.findById(id);
         return repository.findById(id).get(0);
     }
 
     Iterable<Person> getAllPerson() {
         return repository.findAll();
-        //return repository.findAll();
-        //return repository.findAll();
     }
 
     Person findPersonByName(String name, String password) {
@@ -31,8 +28,7 @@ public class PersonService {
                 }
             }
         }
-        
+
         return person;
     }
-
 }

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
 import static javax.persistence.CascadeType.MERGE;
-import static javax.persistence.CascadeType.PERSIST;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,10 +12,11 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Person {
+
     private static final long serialVersionUID = 1L;
-    
+
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String userName;
@@ -26,10 +26,9 @@ public class Person {
     private boolean premium;
 
     @JsonIgnore
-     @OneToMany(cascade=MERGE , mappedBy="person")
+    @OneToMany(cascade = MERGE, mappedBy = "person")
     private List<Orders> orders = new ArrayList();
-     
-     
+
     public Person() {
     }
 
@@ -42,8 +41,6 @@ public class Person {
         this.premium = premium;
     }
 
-    
-
     public List<Orders> getOrders() {
         return orders;
     }
@@ -51,7 +48,7 @@ public class Person {
     public void setOrders(List<Orders> orders) {
         this.orders = orders;
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -108,13 +105,8 @@ public class Person {
         this.premium = premium;
     }
 
-    
-    
     @Override
     public String toString() {
         return "Person{" + "id=" + id + ", name=" + name + ", userName=" + userName + ", password=" + password + ", address=" + address + ", admin=" + admin + ", premium=" + premium + '}';
     }
-    
-    
-
 }

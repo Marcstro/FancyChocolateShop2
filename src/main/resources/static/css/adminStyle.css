@@ -1,50 +1,50 @@
 .column {
-  float: left;
-  width: 25%;
+    float: left;
+    width: 25%;
 }
 .columnID {
-  float: left;
-  width: 10%;
+    float: left;
+    width: 10%;
 }
 .columnDS {
-  float: left;
-  width: 13%;
+    float: left;
+    width: 13%;
 }
 .columnOrderDetails {
-  float: left;
-  width: 63%;
+    float: left;
+    width: 63%;
 }
 .columnOrder {
-  float: left;
-  width: 21%;
+    float: left;
+    width: 21%;
 }
 
 .row{
-  width: 95%;
-  height: 30px;
+    width: 95%;
+    height: 30px;
 }
 .rowOrders{
-  width: 95%;
-  height: fit-content;
+    width: 95%;
+    height: fit-content;
 }
 
 .collapsible-header{
-  height: 60px;
+    height: 60px;
 }
 
 .collapsible{
-  margin-left: 10%;
-  margin-right: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .headerCustomerList{
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .title{
-  font-weight: 500;
+    font-weight: 500;
 }
 
 .withUpperBorder{
-  border-bottom: solid 1px gainsboro;
+    border-bottom: solid 1px gainsboro;
 }

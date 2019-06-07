@@ -1,14 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author marcu
- * aer awesome
- */
-
 package Chokladgruppen.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,77 +22,36 @@ public class PurchaseController {
         this.orderService = orderService;
         this.chocolateService = chocolateService;
         this.orderDetailsService = orderDetailsService;
-        System.out.println("purchaseController skapats korrekt!");
     }
-    
-    
-    @PostMapping 
+
+    @PostMapping
     @ResponseBody
-    boolean postResult(@RequestBody Purchase purchase){
-        if(purchase==null)
-            System.out.println("objektet är null");
-        System.out.println(purchase.toString());
-        if(purchase.getPerson()==null){
-            System.out.println("personen ar null");
-        }
-        else{
-        System.out.println("Nu sa koper " + purchase.getPerson().getName()
-        + " dessa choklader: " + purchase.getChocolates().toString());
+    boolean postResult(@RequestBody Purchase purchase) {
         
-        Orders nyOrder=new Orders(purchase.getPerson());
-        orderService.repository.save(nyOrder);
-        for(int x=0; x<purchase.getChocolates().size()+1; x++){
-            if(x==purchase.getChocolates().size()){
-                return true;
+        if (purchase.getPerson() == null) {
+            
+        } else {
+            Orders nyOrder = new Orders(purchase.getPerson());
+            orderService.repository.save(nyOrder);
+            for (int x = 0; x < purchase.getChocolates().size() + 1; x++) {
+                if (x == purchase.getChocolates().size()) {
+                    return true;
+                }
+
+                //This changes the amount of chocolates in the database
+                int initialAmount = chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).getInStock();
+                int amountToRemove = purchase.getChocolates().get(x).getAmount();
+                int theFinalAmount = initialAmount - amountToRemove;
+
+                chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).setInStock(theFinalAmount);
+                
+                OrderDetails nyOrderDetails = new OrderDetails(purchase.getChocolates().get(x).getAmount(),
+                        purchase.getChocolates().get(x),
+                        nyOrder);
+                orderDetailsService.repository.save(nyOrderDetails);
             }
-            //if(!((x+1)<purchase.getChocolates().size())){
-            System.out.println("Nu gar for lopen igenom " + x);
-//            OrderDetails nyOrderDetails = new OrderDetails(purchase.getChocolates().get(x).getAmount(),
-//            purchase.getChocolates().get(x),
-//            nyOrder);
-//            orderDetailsService.repository.save(nyOrderDetails);
-            
-            
-            
-            //This changes the amount of chocolates in the database
-            System.out.println(chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).getInStock());
-            System.out.println((purchase.getChocolates().get(x).getAmount()));
-            
-            System.out.println((chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).getInStock())
-                    -(purchase.getChocolates().get(x).getAmount()));
-            
-            
-            int initialAmount=chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).getInStock();
-            int amountToRemove=purchase.getChocolates().get(x).getAmount();
-            int theFinalAmount=initialAmount-amountToRemove;
-            System.out.println("The final number:" + theFinalAmount);
-            
-            chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).setInStock(theFinalAmount);
-            System.out.println(chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).getInStock());
-//            chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).setInStock(
-//            ((chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).getInStock())
-//                            -(purchase.getChocolates().get(x).getAmount())));
-//            
-//           
-            OrderDetails nyOrderDetails = new OrderDetails(purchase.getChocolates().get(x).getAmount(),
-            purchase.getChocolates().get(x),
-            nyOrder);
-            orderDetailsService.repository.save(nyOrderDetails);
-            
-//                    if(x==purchase.getChocolates().size()-1){
-//                        System.out.println("extrametoden tillakllades");
-//                        chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).setInStock(5);
-//                    }
         }
-//        int x=purchase.getChocolates().size();
-//                    chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).setInStock(
-//            ((chocolateService.getChocolate(purchase.getChocolates().get(x).getChocolateId()).getInStock())
-//                            -(purchase.getChocolates().get(x).getAmount())));
-        //}
-        }
-        //System.out.println(purchase.getChocolates().toString());
-        
+
         return true;
     }
-    
 }

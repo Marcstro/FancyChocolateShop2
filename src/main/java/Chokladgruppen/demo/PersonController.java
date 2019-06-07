@@ -1,14 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author marcu
- * aer awesome
- */
-
 package Chokladgruppen.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +12,14 @@ public class PersonController {
 
     @Autowired
     PersonService service;
-    
+
     @GetMapping
-    public Iterable<Person> getPersons(){
+    public Iterable<Person> getPersons() {
         return service.getAllPerson();
     }
-    
+
     @GetMapping("/{id}")
-    public Person getPersonId(@PathVariable Long id){
+    public Person getPersonId(@PathVariable Long id) {
         return service.getPerson(id);
     }
 }

@@ -1,5 +1,3 @@
-
-
 package Chokladgruppen.demo;
 
 import Chokladgruppen.demo.Chocolate;
@@ -15,20 +13,16 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class OrderDetails {
-    
+
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private int amount;
-    
-    //denna kanske behovs?
-    //@JsonIgnore
-    @OneToOne(cascade=MERGE)
+
+    @OneToOne(cascade = MERGE)
     private Chocolate chocolate;
-    
-    //denna ocksa?
-    //@JsonIgnore
-    @ManyToOne(cascade=MERGE)
+
+    @ManyToOne(cascade = MERGE)
     public Orders orders;
 
     public OrderDetails() {
@@ -43,8 +37,6 @@ public class OrderDetails {
         this.chocolate = chocolate;
         this.orders = orders;
     }
-    
-    
 
     public Long getId() {
         return id;
@@ -69,8 +61,6 @@ public class OrderDetails {
     public void setOrders(Orders orders) {
         this.orders = orders;
     }
-    
-    
 
     public int getAmount() {
         return amount;
@@ -79,21 +69,9 @@ public class OrderDetails {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-    
-    
-
-//    @Override
-//    public String toString() {
-//        return "OrderDetails{" + "id=" + id + ", amount=" + amount + '}';
-//    }
 
     @Override
     public String toString() {
         return "OrderDetails{" + "id=" + id + ", amount=" + amount + ", chocolate=" + chocolate + ", orders=" + orders + '}';
     }
-    
-    
-    
-    
-
 }

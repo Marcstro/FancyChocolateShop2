@@ -87,13 +87,13 @@ function getCustomersMap(customers){
                                 + `<div class="columnOrder"><p>${i.price}</p></div>`
                                 + `<div class="columnOrder"><p>${i.amount}</p></div>`
                                 + `</div>`;
-                    })
+                    });
 
             customerList +=`<div class="row withUpperBorder"></div>`;
-        })
+        });
         
         customerList += `</div></li>`;
         
         document.querySelector(".collapsible").innerHTML = customerList;
-    })
+    });
 }

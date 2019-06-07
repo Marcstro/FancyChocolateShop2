@@ -7,9 +7,9 @@ import javax.persistence.Id;
 
 @Entity
 public class Chocolate {
-    
+
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long chocolateId;
     private String name;
     private double price;
@@ -126,19 +126,8 @@ public class Chocolate {
         this.smallPictureName = smallPictureName;
     }
 
-    
-    
     @Override
     public String toString() {
         return "Chocolate{" + "chocolateId=" + chocolateId + ", name=" + name + ", price=" + price + ", description=" + description + ", brand=" + brand + ", inStock=" + inStock + ", amount=" + amount + ", inStockMessage=" + inStockMessage + ", showPopUp=" + showPopUp + ", pictureName=" + pictureName + '}';
     }
-
-    
-    
-    
-    
-    
-    
-    
-
 }
