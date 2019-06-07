@@ -1,8 +1,4 @@
 
-//var productsInCart = [{chocolate:{name:"Chokladtryffel", price:100}, amount:10}, 
-//                        {chocolate:{name:"Praliner", price:265}, amount:2}, 
-//                        {chocolate:{name:"Chokladägg", price:120}, amount:4}, 
-//                        {chocolate:{name:"Chokladhäst", price:673}, amount:8}];
 
 var productsInCart = [];
 
@@ -18,14 +14,17 @@ function getCustomer() {
 }
 
 function getCart() {
+    productsInCart.length = 0;
     for (i = 0; i < sessionStorage.length; i++) {
-        var obj = JSON.parse(sessionStorage.getItem("products" + i));
-        if (obj !== null){
+        var keyName = sessionStorage.key(i);
+        var obj = JSON.parse(sessionStorage.getItem(keyName));
+        console.log(i + ". key(index): " + sessionStorage.key(i));
+        
+        if (keyName !== "loggedInPerson"){
             productsInCart.push(obj);
+            console.log(i + ". Obj som läggs till: " + sessionStorage.key(i));
         }
-//        console.log("getCart: " + sessionStorage.getItem("products"+i));
-//        console.log("getCart_productsInCart: " + productsInCart[i]);
-        console.log("getCart, length: " + productsInCart.length);
+
     }
     getProducts();
 }
@@ -51,7 +50,7 @@ function getProducts() {
                             <td class="cartColumn"><a class="pink lighten-5 black-text btn removeButton" id="1" onClick="addEventListenerRemove(${counter})">Ta bort</a></td>
                         </tr>`;
         counter++;
-        console.log("length_in_map2: " + productsInCart.length);
+        // console.log("length_in_map2: " + productsInCart.length);
     });
 
     ProductHTML += `</tbody></table>`;
@@ -89,45 +88,60 @@ function getProducts() {
                         </tbody>
                     </table>`;
 
-
-
     document.querySelector(".collapsible").innerHTML += ProductHTML;
 }
 
-function addEventListenerRemove(counter) {
-    // productsInCart = productsInCart.slice(0, counter).concat(productsInCart.slice(counter + 1));
-//    for (i = 0; i < sessionStorage.length; i++) {
-//        var obj = JSON.parse(sessionStorage.getItem("products" + i));
-//        if (obj !== null){
-//            productsInCart.push(obj);
-//        }
-//        console.log("getCart: " + sessionStorage.getItem("products"+i));
-//        console.log("getCart_productsInCart: " + productsInCart[i]);
-//        console.log("getCart_length: " + productsInCart.length);
-//    }
+function addEventListenerRemove(counter, x) {
     
-    console.log("längd före: " + sessionStorage.length);
-    console.log("Lista före: " + JSON.stringify(getProducts()));
-    console.log("Borttagen choklad: " + JSON.parse(sessionStorage.getItem("products" + counter)));
-    sessionStorage.removeItem("products" + counter);
-    console.log("längd efter: " + sessionStorage.length);
-    console.log("lista efter: " + JSON.stringify(getProducts()));
+    // Ta reda på vilket obj som hör ihop med counter.
+    var objToDelete = productsInCart[counter];
+    var nameOnObjToDelete = objToDelete.name;
+    console.log("nameOnObjToDelete: " + nameOnObjToDelete);
     
-    document.querySelector(".collapsible").innerHTML = "";
-    getProducts();
+    // Hålla reda på om chokladobjektet tagits bort
+    var chocolateRemoved = false;
+    // Matcha namnet på produkten med ett nyckelvärde i sessionStorage
+    for (i = 0; i < sessionStorage.length; i++) {
+        var keyNameToRemove = sessionStorage.key(i);
+        var objToRemove = JSON.parse(sessionStorage.getItem(keyNameToRemove));
+        
+        if (!chocolateRemoved && keyNameToRemove !== "loggedInPerson"){
+            // Kolla att värdet inte är null
+            if (objToRemove !== null){
+                var nameOnSessionObjChocolate = objToRemove.name;
+                console.log("nameOnSessionObjChocolate: " + nameOnSessionObjChocolate);
+                // Överensstämmer namnen? Ta bort objektet.
+                if (nameOnObjToDelete === nameOnSessionObjChocolate){
+                    sessionStorage.removeItem(keyNameToRemove);
+                    console.log("key on removed chocolate: " + keyNameToRemove);
+                    chocolateRemoved = true;
+                }
+            }
+        }
+    }
+    // Tömma elementet som ska fyllas. Denna funkar.
+    $('.collapsible').empty();
+    // Fylla på element och choklader igen
+    getCart();  
 }
 
 function thankYou() {
     
-    console.log(sessionStorage.getItem("loggedInPerson"));
+    // console.log(sessionStorage.getItem("loggedInPerson"));
     var a =1;
     if(sessionStorage.getItem("loggedInPerson")){
         a++;
     }
     //if(sessionStorage.getItem("loggedInPerson") !== null || sessionStorage.getItem("loggedInPerson") !== undefined ){
      if(a>1){   
-    console.log("Du har korrekt kommit in i thankYou, som ar kop-funktionen");
-    document.querySelector(".collapsible").innerHTML = "Tack för ditt köp!!";
+    // console.log("Du har korrekt kommit in i thankYou, som ar kop-funktionen");
+    document.querySelector(".collapsible").innerHTML = "";
+    document.querySelector(".thankYou").innerHTML = 
+                `<div class="row">
+                    <div class="col s12 m8 offset-m3 l8 offset-l3 xl8 offset-xl3">
+                        <p class="dreamyFont3">Tack för ditt köp! Välkommen åter!</p>
+                    </div>
+                </div>`;
     console.log("Nu handlade " + sessionStorage.getItem("loggedInPerson") + "!");
     
     
@@ -139,7 +153,6 @@ function thankYou() {
               choklader.push(obj);
           }
     }
-    console.log(choklader);
     
     $.ajax({
         url: '/purchase',
@@ -177,8 +190,6 @@ function thankYou() {
     else{
         console.log("OBS ingen inloggad person!");
     }
-            
-    
 }
 
 function logOut(){
