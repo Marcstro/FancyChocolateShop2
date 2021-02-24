@@ -1,8 +1,12 @@
-"FancyChocolateShop2" is a "complete" deluxe chocolate shop. Start the Java maven project, go to http://localhost:8080 and you'll be presented with a website hosting the chocolate shop.
+This project is not complete.
+
+Unfortunately I could not find the completed version of the project, this version lacks features such as proper website navigation, admin page is not showing correct data and several buttons are slow to react (although they do function).
+
+But the program runs just fine; "FancyChocolateShop2" is a "complete" deluxe chocolate shop. Start the Java maven project, go to http://localhost:8080 and you'll be presented with a website hosting the chocolate shop.
 
 Either make a new account, log in as a user (existing username: Alice, Password: Alice123) or log in as Admin (username: Admin, password: Password).
 And you'll be able to make purchases with the money available in your account. Orders, new accounts and history will be saved in the H2-database on the server computer.
-Admin accounts are able to see purchases from all other accounts.
+Admin accounts was intended to be able to see all purchases, but currently only see example orders.
 
 This is the group project that I and 2 others did during our backend course at Nackademin.
 The frontend is written in Javascript with some jQuery, the backend is made with Java Spring boot to create a REST API, along with H2 to create a SQL database.
