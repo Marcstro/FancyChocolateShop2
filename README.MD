@@ -1,4 +1,4 @@
-"FancyChocolateShop2" is a "complete" deluxe chocolate shop. Start the Jave maven project, along with the javascript project (at resources/static/js), go to http://localhost:8080 and you'll be presented with a website hosting the chocolate shop.
+"FancyChocolateShop2" is a "complete" deluxe chocolate shop. Start the Java maven project, go to http://localhost:8080 and you'll be presented with a website hosting the chocolate shop.
 
 Either make a new account, log in as a user (existing username: Alice, Password: Alice123) or log in as Admin (username: Admin, password: Password).
 And you'll be able to make purchases with the money available in your account. Orders, new accounts and history will be saved in the H2-database on the server computer.
